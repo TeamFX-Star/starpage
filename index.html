@@ -1,39 +1,60 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <title>Star Wars: Home</title>
-    <link rel="shortcut icon" href="src/clone.ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup</title>
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <h1>Bienvenido a Star Wars</h1>
-    
-    <h2>Explora nuestras páginas</h2>
-    <ul>
-        <li><a href="movies.html">Películas</a></li>
-        <li><a href="series.html">Series</a></li>
-        <li><a href="characters.html">Personajes</a></li>
-    </ul>
-    
-    <h2>Comparte tu opinión sobre nuestra página</h2>
-    <form>
-        <label for="name">Nombre:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="email">Correo electrónico:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="favorite_character">Personaje favorito:</label><br>
-        <input type="text" id="favorite_character" name="favorite_character" required><br><br>
-        
-        <label for="favorite_movie">Película favorita:</label><br>
-        <input type="text" id="favorite_movie" name="favorite_movie" required><br><br>
-        
-        <label for="feedback">Comentarios:</label><br>
-        <textarea id="feedback" name="feedback" rows="4" required></textarea><br><br>
-        
-        <input type="submit" value="Enviar">
-    </form>
+  <div class="container">
+    <div class="form-container" id="login-form">
+      <h1>Login</h1>
+      <form id="login-form-element">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
+    </div>
+
+    <div class="form-container" id="signup-form" style="display: none;">
+      <h1>Sign Up</h1>
+      <form id="signup-form-element">
+        <label for="new-username">Username</label>
+        <input type="text" id="new-username" name="new-username" required>
+        <label for="new-email">Email</label>
+        <input type="email" id="new-email" name="new-email" required>
+        <label for="new-password">Password</label>
+        <input type="password" id="new-password" name="new-password" required>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+    </div>
+  </div>
+
+  <script>
+    async function fetchUserData() {
+  const url = "https://star-api.cafirexos.net/api/login/register?name=Hola&email=eee@gmail.com&password=aaaaa";
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json(); // Convierte la respuesta a JSON
+
+    console.log(data); // Muestra los datos en la consola
+
+    // Aquí puedes hacer lo que necesites con los datos obtenidos
+    // Por ejemplo, mostrarlos en tu página HTML o realizar otras operaciones
+
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Llama a la función para realizar la solicitud
+fetchUserData();
+</script>
 </body>
 </html>
